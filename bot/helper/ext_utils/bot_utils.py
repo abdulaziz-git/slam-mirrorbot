@@ -21,8 +21,8 @@ PAGE_NO = 1
 
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading...📤"
-    STATUS_DOWNLOADING = "Downloading...📥"
+    STATUS_UPLOADING = "Uploading...⏫"
+    STATUS_DOWNLOADING = "Downloading...⏬"
     STATUS_CLONING = "Cloning...♻️"
     STATUS_WAITING = "Queued...📝"
     STATUS_FAILED = "Failed 🚫. Cleaning Download..."
@@ -131,7 +131,7 @@ def get_readable_message():
         for download in list(download_dict.values()):
             INDEX += 1
             if INDEX > COUNT:
-                msg += f"<b>Filename:</b> <code>{download.name()}</code>"
+                msg += f"<b>📂 Filename:</b> <code>{download.name()}</code>"
                 msg += f"\n<b>Status:</b> <i>{download.status()}</i>"
                 if download.status() not in [
                     MirrorStatus.STATUS_ARCHIVING,
@@ -144,8 +144,8 @@ def get_readable_message():
                         msg += f"\n<b>Uploaded:</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
                     else:
                         msg += f"\n<b>Downloaded:</b> <code>{get_readable_file_size(download.processed_bytes())}</code> of <code>{download.size()}</code>"
-                    msg += f"\n<b>Speed:</b> <code>{download.speed()}</code>" \
-                            f", <b>ETA:</b> <code>{download.eta()}</code> "
+                    msg += f"\n<b>⚡️ Speed:</b> <code>{download.speed()}</code>" \
+                            f", <b>⏳ ETA:</b> <code>{download.eta()}</code> "
                     # if hasattr(download, 'is_torrent'):
                     try:
                         msg += f"\n<b>Seeders:</b> <code>{download.aria_download().num_seeders}</code>" \
@@ -157,7 +157,7 @@ def get_readable_message():
                             f" | <b>Leechers:</b> <code>{download.torrent_info().num_leechs}</code>"
                     except:
                         pass
-                    msg += f"\n<b>To Stop:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
+                    msg += f"\n<b>To Stop 👉:</b> <code>/{BotCommands.CancelMirror} {download.gid()}</code>"
                 msg += "\n\n"
                 if STATUS_LIMIT is not None and INDEX >= COUNT + STATUS_LIMIT:
                     break

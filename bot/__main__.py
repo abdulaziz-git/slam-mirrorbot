@@ -31,26 +31,28 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>Bot Uptime:</b> <code>{currentTime}</code>\n' \
-            f'<b>Total Disk Space:</b> <code>{total}</code>\n' \
-            f'<b>Used:</b> <code>{used}</code> ' \
-            f'<b>Free:</b> <code>{free}</code>\n\n' \
-            f'<b>Upload:</b> <code>{sent}</code>\n' \
-            f'<b>Download:</b> <code>{recv}</code>\n\n' \
-            f'<b>CPU:</b> <code>{cpuUsage}%</code> ' \
-            f'<b>RAM:</b> <code>{memory}%</code> ' \
-            f'<b>DISK:</b> <code>{disk}%</code>'
+    stats = f'<b>Bot Uptime ⌚:</b> <code>{currentTime}</code>\n' \
+            f'<b>Total Disk Space 🗄️:</b> <code>{total}</code>\n' \
+            f'<b>Used 🗃️:</b> <code>{used}</code> ' \
+            f'<b>Free 🗃️:</b> <code>{free}</code>\n\n' \
+            f'<b>Upload ⏫:</b> <code>{sent}</code>\n' \
+            f'<b>Download ⏬:</b> <code>{recv}</code>\n\n' \
+            f'<b>CPU 🖥️:</b> <code>{cpuUsage}%</code> ' \
+            f'<b>RAM ⛏️:</b> <code>{memory}%</code> ' \
+            f'<b>DISK 📀:</b> <code>{disk}%</code>'
     sendMessage(stats, context.bot, update)
 
 
 def start(update, context):
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("Repo", "https://github.com/SlamDevs/slam-mirrorbot")
-    buttons.buildbutton("Channel", "https://t.me/SlamMirrorUpdates")
+    buttons.buildbutton("Anime Sub Indo", "https://animecracks.net/")
+    buttons.buildbutton("Channel", "https://t.me/animecracksid")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
-This bot can mirror all your links to Google Drive!
+<b>Yo..!!!, I'm a Mirror Bot which can mirror all your Torrents, Direct links & Mega.nz links to Google drive</b>
+<b>For Any Issues & Ideas contact my owners :</b> @chickenstealer
+<b>Mirror Group :</b> Join @onboxleech
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
         sendMarkup(start_string, context.bot, update, reply_markup)
@@ -128,9 +130,9 @@ help_string_telegraph = f'''<br>
 <b>/{BotCommands.StatsCommand}</b>: Show Stats of the machine the bot is hosted on
 '''
 help = Telegraph(access_token=telegraph_token).create_page(
-        title='Slam Mirrorbot Help',
-        author_name='Slam Mirrorbot',
-        author_url='https://github.com/SlamDevs/slam-mirrorbot',
+        title='Onbox Leech Help',
+        author_name='Onbox Leech',
+        author_url='https://blogdoang.com',
         html_content=help_string_telegraph,
     )["path"]
 
